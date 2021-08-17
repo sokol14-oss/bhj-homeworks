@@ -1,10 +1,13 @@
-
-const time = function() {
-const elementTimer = document.getElementById("timer");
-elementTimer.textContent--;
+window.onload = function() {
+let elementTimer = document.getElementById("timer");
+let startTime = 59;
+function activeTime(){
+	elementTimer.textContent -=1;
+	startTime = elementTimer.textContent;
+	if (startTime <= 0) {
+		alert("Вы победили!");
+		clearInterval(activeTime);
+	}
 }
-setInterval(time, 1000);
-if (time === 0) {
-	alert("«Вы победили в конкурсе!»");
-	clearInterval(time);
-
+setInterval(activeTime, 1000);
+}
