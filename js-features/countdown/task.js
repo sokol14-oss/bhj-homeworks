@@ -5,9 +5,9 @@ function activeTime(){
 	elementTimer.textContent -=1;
 	startTime = elementTimer.textContent;
 	if (startTime <= 0) {
+		clearInterval(timerId)
 		alert("Вы победили!");
-		clearInterval(activeTime);
 	}
 }
-setInterval(activeTime, 1000);
+let timerId = setInterval(activeTime, 1000);
 }

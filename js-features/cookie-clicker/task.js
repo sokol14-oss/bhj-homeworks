@@ -4,12 +4,11 @@ const elementClick = document.getElementById("clicker__counter");
 const click = document.getElementById("click__counter");
 function clicker() {
 	elementClick.textContent++;
-	return elementClick.textContent;
-}
-img.onclick = clicker;
-function changeSize() {
+	img.onclick = function() {
 	img.width = 100;
 	img.height = 100;
+	img.onclick = null;
+	
 }
-
-img.onclick = changeSize;
+}
+img.onclick = clicker;

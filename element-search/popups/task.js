@@ -1,13 +1,16 @@
 window.onload = function() {
-const modal = document.getElementsClassName("modal");
+const modalMain = document.getElementById("modal_main");
 const close = document.getElementsByClassName("modal__close");
 const succes = document.getElementsByClassName("show-success");
 const modalSucces = document.getElementById("modal_success");
-modal.className = modal_active;
-close.onclick = function() {
-modal = null;
+modalMain.classList.add("modal_active");
+close.item(0).onclick = function() {
+    modalMain.classList.remove("modal_active");
 }
-succes.onclick = function() {
-	return modalSucces;
+succes.item(0).onclick = modal;
+function modal() {
+modalSucces.classList.add("modal_active");
 }
 }
+
+
