@@ -1,8 +1,10 @@
-
+window.onload = function() {
 const random = document.querySelector("hole_has-mole");
 const elem = document.querySelectorAll(".hole");
 const win = document.getElementById("dead");
 const lose = document.getElementById("lost");
+Array.from(elem);
+const index = elem.forEach((i)=> i);
 function getHole(index) {
 	const holeId = document.getElementById(`hole${index}`);
 	return holeId;
@@ -27,3 +29,4 @@ hole.onclick =null;
 }
 }
 hole.onclick = game;
+}

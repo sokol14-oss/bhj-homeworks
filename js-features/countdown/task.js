@@ -1,13 +1,15 @@
 window.onload = function() {
-let elementTimer = document.getElementById("timer");
-let startTime = new Date();
-startTime = startTime.setHours(0,0,30).toLocaleString("ru", { hour: '2-digit', minute: '2-digit', '2-digit'});
+const elementTimer = document.getElementById("timer");
+let startTime = new Date(0,0,0,0,0,30,0);
+startTime = startTime.toTimeString();
+startTime = parseInt(startTime);
+console.log(startTime);
 
 function activeTime(){
 
-	elementTimer.textContent = startTime;
-	elementTimer.textContent -=1;
-	if (startTime <= 0) {
+	startTime= elementTimer;
+	startTime.textContent--;
+	if (startTime.textContent <= 0) {
 		clearInterval(timerId)
 		alert("Вы победили!");
 	}
