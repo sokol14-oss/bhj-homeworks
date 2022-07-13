@@ -1,32 +1,27 @@
-window.onload = function() {
-const random = document.querySelector("hole_has-mole");
-const elem = document.querySelectorAll(".hole");
+
+const elem = Array.from(document.querySelectorAll(".hole"));
 const win = document.getElementById("dead");
 const lose = document.getElementById("lost");
-Array.from(elem);
-const index = elem.forEach((i)=> i);
-function getHole(index) {
-	const holeId = document.getElementById(`hole${index}`);
-	return holeId;
-}
-const hole = getHole(index);
-
 function game (){
-	for( let i =0; i >9;i++) {
-if(hole.className = "hole_has-mole") {
+	const index = elem.forEach((i)=> {
+		return i;
+	})
+if(index.classList.contains(".hole_has-mole")) {
 win.textContent++;
 } else{
 	lose.textContent++;
 }
 if(win.textContent===10){
 	alert ("Вы победили!");
-	hole.onclick =null;
+	index.onclick =null;
 }
 if(lose.textContent===5){
 alert ("Вы проиграли");
-hole.onclick =null;
+index.onclick =null;
 	}
+
 }
-}
-hole.onclick = game;
-}
+ elem.forEach((elem) => elem.onclick = game);
+
+
+
