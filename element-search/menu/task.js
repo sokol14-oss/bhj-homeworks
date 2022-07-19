@@ -1,10 +1,11 @@
-window.onload = function() {
 const links = document.querySelectorAll(".menu__link");
-const sub = document.querySelectorAll(".menu_sub");
-const elemSub = sub.forEach(element => {
-	return element.closest("li .menu__link");
-});
-elemSub.onclick = function() {
-console.log(this);
-}
-}
+links.forEach(element => {
+	element.addEventListener("click",event => {
+		event.preventDefault();
+		const parent = event.target.closest(".menu__item");
+		const sub = parent.querySelector(".menu_sub");
+		sub.classList.toggle("menu_active");
+	})
+
+})
+

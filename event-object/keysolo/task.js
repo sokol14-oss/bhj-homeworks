@@ -4,6 +4,7 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    this.timer = container.querySelector(".status__timer");
 
     this.reset();
 
@@ -14,9 +15,19 @@ class Game {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
+    this.timer.textContent = 5;
   }
 
   registerEvents() {
+   setInterval(()=>this.timer.textContent--,1000);
+   document.addEventListener("keyup",event => {
+    if(this.currentSymbol.textContent.toUpperCase() === event.key.toUpperCase() && this.timer.textContent > 0 || this.currentSymbol.textContent === event.key && this.timer.textContent > 0) {
+      this.success();
+    }
+    else{
+      this.fail();
+    }
+   })
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -37,10 +48,16 @@ class Game {
       alert('Победа!');
       this.reset();
     }
+    if(this.timer.textContent === 0) {
+      this.reset();
+    }
     this.setNewWord();
   }
 
   fail() {
+    if(this.timer.textContent === 0) {
+      this.reset();
+    }
     if (++this.lossElement.textContent === 5) {
       alert('Вы проиграли!');
       this.reset();
