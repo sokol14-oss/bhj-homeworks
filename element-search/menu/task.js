@@ -4,7 +4,9 @@ links.forEach(element => {
 		event.preventDefault();
 		const parent = event.target.closest(".menu__item");
 		const sub = parent.querySelector(".menu_sub");
-		sub.classList.toggle("menu_active");
+		if(sub) {
+         sub.classList.toggle("menu_active");
+		}
 	})
 
 })

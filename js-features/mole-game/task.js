@@ -8,13 +8,15 @@ win.textContent++;
 } else {
 lose.textContent++;
 }
-if(win.textContent===10){
+if(win.textContent==10){
 alert ("Вы победили!");
-event.target.onclick =null;
+win.textContent=0;
+lose.textContent=0;
 }
-if(lose.textContent===5){
+if(lose.textContent==5){
 alert ("Вы проиграли");
-event.target.onclick =null;
+win.textContent=0;
+lose.textContent=0;
 }
 }
  elem.forEach((e) => e.onclick = game);

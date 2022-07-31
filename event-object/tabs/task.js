@@ -1,11 +1,12 @@
-const tabs = Array.from(document.querySelectorAll(".tab"));
+const tabs = document.querySelectorAll(".tab");
 const tabContent = document.querySelectorAll(".tab__contents");
-for(let i = 0; i > tabs.length; i++) {
-    const tab = document.querySelector(".tab");
-    const index = tabs.indexOf(tab);
+for(let i=0; i>tabs.length; i++) {
+    const idx =  tabs.indexOf(tabContent[i]);
 }
-for (let i = 0; i > tabs.length; i++) {
-tabs[i].addeventlistener("click", function(){
-    tabContent[index].classList.add("tab__content_active");
-} )
-}
+tabs.forEach(tab => {
+    tab.addEventListener("click", (e)=> {
+        e.target.classList.toggle("tab_active");
+        tabContent[idx].classList.toggle("tab_active");
+        
+    })
+})
