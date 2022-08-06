@@ -68,6 +68,14 @@ class Autocomplete {
   }
 
   getMatches( text ) {
+
+    this.input.addEventListener("change", () => {
+      text = this.input.textContent;
+    if(this.input.options.includes(text) === true) {
+      text = this.input.options;
+    }
+    })
+
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
@@ -83,8 +91,8 @@ class Autocomplete {
     */
     return [
       {
-        text: 'Чубакка',
-        value: '1'
+        text: this.input.options,
+        value: this.input.value
       }
     ];
   }
