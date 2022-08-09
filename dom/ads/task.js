@@ -1,5 +1,5 @@
 window.onload = function() {
-const rotate = document.querySelectorAll(".rotator__case");
+const rotate =Array.from(document.querySelectorAll(".rotator__case"));
 function change() {
     const counter = 0;
     rotate[counter].classList.remove("rotator__case_active");

@@ -19,7 +19,11 @@ class Game {
   }
 
   registerEvents() {
-   setInterval(()=>this.timer.textContent--,1000);
+    let timerId = setInterval(()=>this.timer.textContent--,1000);
+    if(this.timer.textContent == 0) {
+      clearInterval(timerId);
+      this.fail();
+     }
    document.addEventListener("keyup",event => {
     if(this.currentSymbol.textContent.toUpperCase() === event.key.toUpperCase() && this.timer.textContent > 0 || this.currentSymbol.textContent === event.key && this.timer.textContent > 0) {
       this.success();
@@ -48,16 +52,11 @@ class Game {
       alert('Победа!');
       this.reset();
     }
-    if(this.timer.textContent === 0) {
-      this.reset();
-    }
+
     this.setNewWord();
   }
 
   fail() {
-    if(this.timer.textContent === 0) {
-      this.reset();
-    }
     if (++this.lossElement.textContent === 5) {
       alert('Вы проиграли!');
       this.reset();
