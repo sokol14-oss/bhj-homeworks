@@ -4,24 +4,25 @@ chatWidget.addEventListener("click", ()=>{
 })
 const botMessages = ["Салют","Подождите немного,оператор скоро ответит","Привет"];
 const input = document.getElementById("chat-widget__input");
-const message = document.querySelector(".chat-widget__messages");
+const messages = document.querySelector(".chat-widget__messages");
 function time() {
     const time = document.querySelector(".message__time");
     const date = new Date();
-    time.innerHTML = getHours() + getMinutes();
+    time.innerHTML = date.getHours() + date.getMinutes();
+    return time;
 }
 function botSet() {
-    return botMessages[Math.floor(Math.random() * botMessages.length)];
+  messages.innerHTML+= botMessages[Math.floor(Math.random() * botMessages.length)];
+    return messages + time;
 }
 function clientSet(e) {
-if (e.keyCode=== 13 && e.target.textContent !=="") {
-    time();
-message.innerHTML += e.target.textContent;
-message.classList.add("message_client");
-message.innerHTML.reset();
+  const message = document.querySelector(".message");
+if (e.code == 'Enter' && e.key.textContent !=="") {
+  message.classList.add("message_client");
+  message.innerHTML = e.key.textContent;
+  messages.innerHTML +=message.innerHTML + time ;
+input.innerHTML.reset();
 }
 }
-input.addEventListener("keyup",time);
-
 input.addEventListener("keyup",botSet);
 input.addEventListener("keyup",clientSet);

@@ -5,25 +5,33 @@ class Game {
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
     this.timer = container.querySelector(".status__timer");
-
+this.timerCheck();
     this.reset();
-
     this.registerEvents();
   }
 
+  timerN(){
+    this.timer.textContent = 10;
+    this.timerCheck();
+  }
+  timerCheck() {
+    let timerId = setInterval(()=> { 
+      this.timer.textContent--;
+      if(this.timer.textContent == 0) {
+        clearInterval(timerId);
+        this.fail();
+        this.timerN();
+       }
+    },1000);
+  }
   reset() {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
-    this.timer.textContent = 5;
+    this.timer.textContent = 10;
   }
 
   registerEvents() {
-    let timerId = setInterval(()=>this.timer.textContent--,1000);
-    if(this.timer.textContent == 0) {
-      clearInterval(timerId);
-      this.fail();
-     }
    document.addEventListener("keyup",event => {
     if(this.currentSymbol.textContent.toUpperCase() === event.key.toUpperCase() && this.timer.textContent > 0 || this.currentSymbol.textContent === event.key && this.timer.textContent > 0) {
       this.success();
@@ -40,7 +48,7 @@ class Game {
       При неправильном вводе символа - this.fail();
      */
   }
-
+  
   success() {
     this.currentSymbol.classList.add('symbol_correct');
     this.currentSymbol = this.currentSymbol.nextElementSibling;
