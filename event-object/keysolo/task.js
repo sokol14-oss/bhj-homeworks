@@ -5,7 +5,7 @@ class Game {
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
     this.timer = container.querySelector(".status__timer");
-this.timerCheck();
+    this.timerCheck();
     this.reset();
     this.registerEvents();
   }
@@ -38,6 +38,7 @@ this.timerCheck();
     }
     else{
       this.fail();
+      this.timer.textContent = 10;
     }
    })
     /*
@@ -73,6 +74,7 @@ this.timerCheck();
   }
 
   setNewWord() {
+    this.timer.textContent = 10;
     const word = this.getWord();
 
     this.renderWord(word);
