@@ -11,7 +11,7 @@ class Game {
   }
 
   timerN(){
-    this.timer.textContent = 10;
+    this.timer.textContent = this.getWord().length;
     this.timerCheck();
   }
   timerCheck() {
@@ -28,7 +28,7 @@ class Game {
     this.setNewWord();
     this.winsElement.textContent = 0;
     this.lossElement.textContent = 0;
-    this.timer.textContent = 10;
+    this.timer.textContent = this.getWord().length;
   }
 
   registerEvents() {
@@ -38,7 +38,7 @@ class Game {
     }
     else{
       this.fail();
-      this.timer.textContent = 10;
+      this.timer.textContent = this.getWord().length;
     }
    })
     /*
@@ -74,7 +74,7 @@ class Game {
   }
 
   setNewWord() {
-    this.timer.textContent = 10;
+    this.timer.textContent = this.getWord().length;
     const word = this.getWord();
 
     this.renderWord(word);
@@ -95,7 +95,7 @@ class Game {
         'javascript'
       ],
       index = Math.floor(Math.random() * words.length);
-
+      console.log(words[index].length);
     return words[index];
   }
 
